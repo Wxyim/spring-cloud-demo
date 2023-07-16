@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: nacos-app
+server:
+  port: 9999
+---
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://127.0.0.1:8848
+        namespace: b805607a-3646-49d4-b018-34b84f2b1b24
+      config:
+        server-addr: http://127.0.0.1:8848
+        namespace: b805607a-3646-49d4-b018-34b84f2b1b24
+        file-extension: yaml
+  config:
+    import: nacos:nacos-app-dev.yaml
+    activate:
+      on-profile: dev
+---
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://127.0.0.1:8848
+        namespace: a8614688-d465-4559-bd2f-0db9fd654fb8
+      config:
+        server-addr: http://127.0.0.1:8848
+        namespace: a8614688-d465-4559-bd2f-0db9fd654fb8
+        file-extension: yaml
+  config:
+    import: nacos:nacos-app-test.yaml
+    activate:
+      on-profile: test
